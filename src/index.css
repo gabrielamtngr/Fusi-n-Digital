@@ -1,0 +1,129 @@
+@import '@fontsource-variable/plus-jakarta-sans';
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Fusión Digital — tokens de marca (manual de marca).
+   Cambia aquí cualquier color y se propaga a todo el sitio:
+   utilidades como bg-night, bg-panel, text-lavender, etc.
+------------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Manrope', system-ui, sans-serif;
+
+  /* Paleta principal */
+  --color-night: #181030; /* Fondo principal */
+  --color-panel: #3b2a5e; /* Paneles y tarjetas */
+  --color-lavender: #bfa6ee; /* Acento y botones */
+  --color-white: #ffffff;
+
+  /* Paleta secundaria */
+  --color-mist: #dcdcdc; /* Fondo claro */
+  --color-ink: #121014; /* Texto oscuro */
+  --color-icon: #bca4ec; /* Acento de iconos */
+
+  /* Colores temáticos */
+  --color-strategy: #121014;
+  --color-creative-from: #3a0f5e;
+  --color-creative-to: #7b9bd6;
+  --color-creative-mid: #a98bea;
+  --color-data: #1a1630;
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-night font-sans text-white antialiased;
+    font-weight: 400;
+  }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(2.5rem, 1.4rem + 5vw, 6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  h3 {
+    font-weight: 700;
+    font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  button,
+  label {
+    font-weight: 500;
+  }
+  ::selection {
+    background: var(--color-lavender);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lavender);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* El cursor personalizado solo oculta el nativo en escritorio con puntero fino */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(100deg, #ffffff 0%, var(--color-lavender) 45%, var(--color-creative-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-creative {
+  background: linear-gradient(135deg, var(--color-creative-from) 0%, var(--color-creative-mid) 55%, var(--color-creative-to) 100%);
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(rgba(191, 166, 238, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(191, 166, 238, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-medium tracking-[0.25em] uppercase text-lavender;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .animate-marquee,
+.marquee:focus-within .animate-marquee,
+.marquee[data-paused='true'] .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
