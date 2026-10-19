@@ -65,10 +65,7 @@ export default function Services() {
             {process.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.08}>
                 <div className="h-full rounded-[1.75rem] bg-white p-7">
-                  <div className="flex items-center justify-between">
-                    <p.icon className="size-7 text-[#BCA4EC]" aria-hidden />
-                    <span className="text-5xl font-extrabold text-ink/10">0{i + 1}</span>
-                  </div>
+                  <p.icon className="size-7 text-[#BCA4EC]" aria-hidden />
                   <h3 className="mt-6">{p.title}</h3>
                   <p className="mt-3 text-sm text-ink/65">{p.text}</p>
                 </div>
