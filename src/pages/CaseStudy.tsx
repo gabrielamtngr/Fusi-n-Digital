@@ -41,7 +41,6 @@ export default function CaseStudy() {
 
       <Container>
         <div className={`relative grid aspect-[21/9] min-h-56 place-items-center overflow-hidden rounded-[2.5rem] bg-gradient-to-br ${project.gradient}`} role="img" aria-label={`Espacio para imagen principal de ${project.name}`}>
-          <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
           <p className="relative px-6 text-center text-[clamp(2rem,1rem+4vw,4.5rem)] font-extrabold leading-none tracking-tight">{project.name}</p>
         </div>
       </Container>

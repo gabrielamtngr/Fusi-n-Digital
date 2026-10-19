@@ -91,12 +91,6 @@
   background: linear-gradient(135deg, var(--color-creative-from) 0%, var(--color-creative-mid) 55%, var(--color-creative-to) 100%);
 }
 
-@utility bg-grid {
-  background-image:
-    linear-gradient(rgba(191, 166, 238, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(191, 166, 238, 0.07) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
 
 @utility eyebrow {
   @apply inline-flex items-center gap-2 text-xs font-medium tracking-[0.25em] uppercase text-lavender;

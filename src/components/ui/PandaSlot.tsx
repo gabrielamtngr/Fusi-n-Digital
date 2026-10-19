@@ -58,7 +58,6 @@ export function ImageSlot({ label, className = '', tone = 'from-panel to-data' }
       role="img"
       aria-label={`Espacio para fotografía: ${label}`}
     >
-      <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
       <div className="absolute -right-10 -top-10 size-40 rounded-full bg-lavender/20 blur-2xl" aria-hidden />
       <span className="relative inline-flex items-center gap-2 rounded-full bg-night/60 px-3 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
         <Camera className="size-3.5 text-icon" aria-hidden />

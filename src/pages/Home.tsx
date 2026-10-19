@@ -29,7 +29,6 @@ function Hero() {
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-night via-night/85 to-night/30" aria-hidden />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-night via-transparent to-night/50" aria-hidden />
-      <div className="absolute inset-0 -z-10 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_left,black,transparent_70%)]" aria-hidden />
 
       <Container className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div>

@@ -25,7 +25,6 @@ export default function ServiceDetail() {
         crumbs={[{ label: 'Inicio', to: '/' }, { label: 'Servicios', to: '/servicios' }, { label: service.name }]}
         aside={
           <div className={`relative mx-auto grid aspect-square w-full max-w-sm place-items-center overflow-hidden rounded-[2.5rem] border border-white/10 ${service.theme}`}>
-            <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
             <div className="absolute size-2/3 rounded-full bg-lavender/20 blur-3xl" aria-hidden />
             <Icon className="relative size-32 text-icon" strokeWidth={1.2} aria-hidden />
           </div>

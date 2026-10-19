@@ -39,7 +39,6 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
     <article className="group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-panel/40">
       <div className={`relative overflow-hidden ${large ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} transition duration-700 group-hover:scale-105`} aria-hidden />
-        <div className="absolute inset-0 bg-grid opacity-50" aria-hidden />
         <div className="absolute inset-0 grid place-items-center p-6 text-center" role="img" aria-label={`Espacio para imagen del proyecto ${project.name}`}>
           <span className="text-[clamp(1.6rem,1rem+2vw,2.6rem)] font-extrabold leading-tight tracking-tight text-white/90 drop-shadow">{project.name}</span>
         </div>

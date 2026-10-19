@@ -61,7 +61,6 @@ export function PageHero({
 }) {
   return (
     <section className={`relative overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-20 ${className}`}>
-      <div className="absolute inset-0 bg-grid [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden />
       <div className="absolute -top-40 right-[-10%] size-[36rem] rounded-full bg-lavender/15 blur-[120px]" aria-hidden />
       <Container className="relative grid items-center gap-12 lg:grid-cols-[1.25fr_1fr]">
         <div>
@@ -116,7 +115,6 @@ export function CtaBanner({
       <Container>
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] bg-creative p-8 sm:p-14">
-            <div className="absolute inset-0 bg-grid opacity-40" aria-hidden />
             <div className="relative grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
               <div>
                 <h2 className="max-w-xl">{title}</h2>
