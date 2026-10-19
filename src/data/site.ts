@@ -45,8 +45,11 @@ export const navigation: NavItem[] = [
   { label: 'Blog', to: '/blog' },
 ]
 
-/** Imagen servida a través de Netlify Image CDN (redimensionada y en WebP). */
+/** Imagen servida a través de Netlify Image CDN (redimensionada y en WebP) en prod, o directa en local. */
 export function cdn(path: string, width: number) {
+  if (import.meta.env.DEV) {
+    return path
+  }
   return `/.netlify/images?url=${encodeURIComponent(path)}&w=${width}&fm=webp`
 }
 

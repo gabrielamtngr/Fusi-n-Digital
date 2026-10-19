@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Sparkles, TrendingUp } from 'lucide-react'
+import { ArrowUpRight, TrendingUp } from 'lucide-react'
 import { ButtonLink } from '../components/ui/Button'
 import { Container, CtaBanner, Reveal, SectionHeading } from '../components/ui/Section'
 import { ImageSlot, PandaSlot } from '../components/ui/PandaSlot'
@@ -16,7 +16,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 function Hero() {
   return (
-    <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16">
+    <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 pb-16 sm:pt-28">
       {/* Composición animada (sustituible por un <video autoPlay muted loop playsInline>) */}
       <motion.img
         src={cdn('/img/hero-fluid.jpg', 1920)}
@@ -33,9 +33,6 @@ function Hero() {
 
       <Container className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div>
-          <motion.p className="eyebrow mb-6" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease }}>
-            <Sparkles className="size-4" aria-hidden /> Fusión Digital · Agencia de marketing
-          </motion.p>
           <h1 className="!text-[clamp(2.9rem,1.2rem+6.4vw,7.25rem)]">
             {['Somos', 'una', 'agencia.'].map((w, i) => (
               <motion.span
@@ -166,11 +163,10 @@ export default function Home() {
                   to={t.to}
                   className="group flex h-full flex-col rounded-[1.75rem] border border-ink/10 bg-white p-7 transition duration-500 hover:-translate-y-1 hover:border-[#BCA4EC] hover:shadow-[0_20px_50px_-20px_rgba(59,42,94,0.45)]"
                 >
-                  <span className="flex items-center justify-between">
-                    <span className="text-xs font-medium tracking-[0.2em] text-[#6b4fb0] uppercase">0{i + 1}</span>
+                  <div className="flex items-center justify-end">
                     <ArrowUpRight className="size-5 text-[#BCA4EC] transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                  </span>
-                  <h3 className="mt-8">{t.title}</h3>
+                  </div>
+                  <h3 className="mt-4">{t.title}</h3>
                   <p className="mt-3 text-sm text-ink/65">{t.text}</p>
                 </Link>
               </Reveal>

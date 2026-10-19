@@ -37,14 +37,14 @@ export function PandaSlot({ className = '', mode = 'image', width = 720, label =
       animate={float ? { y: [0, -14, 0] } : undefined}
       transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
     >
-      <div className="absolute inset-[12%] rounded-full bg-lavender/30 blur-3xl" aria-hidden />
+      <div className="absolute inset-[10%] rounded-full bg-lavender/25 blur-3xl" aria-hidden />
       <img
         src={cdn(PANDA_IMAGE, width)}
         alt={label}
         width={width}
         height={width}
-        loading="lazy"
-        className="relative h-full w-full rounded-[2rem] object-cover [mask-image:radial-gradient(circle_at_center,black_58%,transparent_74%)]"
+        loading="eager"
+        className="relative h-full w-full rounded-[2.5rem] object-cover shadow-2xl"
       />
     </motion.div>
   )

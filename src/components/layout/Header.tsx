@@ -6,6 +6,7 @@ import { navigation, type NavItem } from '../../data/site'
 import { BrandLogo } from '../ui/BrandLogo'
 import { buttonClass } from '../ui/Button'
 import { SocialLinks } from '../ui/SocialLinks'
+import logoSrc from '../../assets/logo.png'
 
 const isActive = (pathname: string, to: string) => (to === '/' ? pathname === '/' : pathname === to || pathname.startsWith(to + '/'))
 
@@ -45,7 +46,7 @@ function Dropdown({ item }: { item: NavItem }) {
       onPointerLeave={(e) => e.pointerType === 'mouse' && setOpen(false)}
       onBlur={(e) => !ref.current?.contains(e.relatedTarget as Node) && setOpen(false)}
     >
-      <div className={`flex items-center rounded-full transition ${active ? 'bg-white/10' : ''}`}>
+      <div className={`flex items-center rounded-full transition ${active ? 'bg-lavender/15 text-lavender' : ''}`}>
         <NavLink
           to={item.to}
           end
@@ -59,7 +60,7 @@ function Dropdown({ item }: { item: NavItem }) {
           aria-controls={menuId}
           aria-label={`Abrir submenú de ${item.label}`}
           onClick={() => setOpen((o) => !o)}
-          className="grid size-8 place-items-center rounded-full text-white/70 transition hover:text-lavender"
+          className={`grid size-8 place-items-center rounded-full transition hover:text-lavender ${active ? 'text-lavender' : 'text-white/70'}`}
         >
           <ChevronDown className={`size-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} aria-hidden />
         </button>
@@ -136,8 +137,13 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
             className="absolute right-0 top-0 flex h-full w-[min(24rem,100%)] flex-col overflow-y-auto bg-night p-6"
           >
             <div className="flex items-center justify-between">
-              <Link to="/" onClick={onClose} aria-label="Fusión Digital — Inicio">
-                <BrandLogo className="text-[15px]" />
+              <Link to="/" onClick={onClose} aria-label="Fusión Digital — Inicio" className="relative z-10 shrink-0">
+                <img
+                  src={logoSrc}
+                  alt="Fusión Digital"
+                  className="h-[40px] w-auto max-h-none object-contain opacity-100"
+                  style={{ opacity: 1, objectFit: 'contain' }}
+                />
               </Link>
               <button onClick={onClose} aria-label="Cerrar menú" className="grid size-11 place-items-center rounded-full bg-white/10">
                 <X className="size-5" aria-hidden />
@@ -223,35 +229,39 @@ export function Header() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? 'border-b border-white/10 bg-night/80 py-3 backdrop-blur-xl' : 'py-5'
-        }`}
+          scrolled ? 'border-b border-white/10 bg-night/85 backdrop-blur-xl' : ''
+        } py-[14px] min-h-[80px] flex items-center`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-          <Link to="/" aria-label="Fusión Digital — Ir al inicio" className="shrink-0 p-1">
-            <BrandLogo className="text-[14px] sm:text-[15px]" />
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+          <Link to="/" aria-label="Fusión Digital — Ir al inicio" className="relative z-10 shrink-0">
+            <img
+              src={logoSrc}
+              alt="Fusión Digital"
+              className="h-[40px] sm:h-[52px] w-auto max-h-none object-contain opacity-100"
+              style={{ width: 'auto', maxHeight: 'none', opacity: 1, objectFit: 'contain' }}
+            />
           </Link>
 
           <nav aria-label="Principal" className="hidden lg:block">
             <ul className="flex items-center gap-1">
-              {navigation.map((item) =>
-                item.children ? (
+              {navigation.map((item) => {
+                const active = isActive(pathname, item.to)
+                return item.children ? (
                   <Dropdown key={item.to} item={item} />
                 ) : (
                   <li key={item.to}>
                     <NavLink
                       to={item.to}
                       end={item.to === '/'}
-                      className={({ isActive: a }) =>
-                        `block rounded-full px-4 py-2 text-sm font-medium transition hover:text-lavender ${
-                          a ? 'bg-white/10 text-lavender' : 'text-white/85'
-                        }`
-                      }
+                      className={`block rounded-full px-4 py-2 text-sm font-medium transition hover:text-lavender ${
+                        active ? 'bg-lavender/15 text-lavender' : 'text-white/85'
+                      }`}
                     >
                       {item.label}
                     </NavLink>
                   </li>
-                ),
-              )}
+                )
+              })}
             </ul>
           </nav>
 

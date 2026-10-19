@@ -1,10 +1,11 @@
 import { useId } from 'react'
+import defaultLogoSrc from '../../assets/logo-fusion-digital.png'
 
 type BrandLogoProps = {
   variant?: 'full' | 'isotipo'
   theme?: 'dark' | 'light'
   className?: string
-  /** Opcional: carga el archivo oficial (p. ej. import logo from '@/assets/logo-fusion-digital.jpeg') en lugar del SVG. */
+  /** Opcional: sobreescribe el archivo oficial de imagen en lugar de la imagen por defecto. */
   imageSrc?: string
 }
 
@@ -40,8 +41,16 @@ export function Isotipo({ className = 'h-10 w-auto' }: { className?: string }) {
 }
 
 export function BrandLogo({ variant = 'full', theme = 'dark', className = '', imageSrc }: BrandLogoProps) {
-  if (imageSrc) {
-    return <img src={imageSrc} alt="Fusión Digital" className={`h-12 w-auto object-contain ${className}`} />
+  const effectiveSrc = imageSrc || (variant === 'full' ? defaultLogoSrc : undefined)
+
+  if (effectiveSrc) {
+    return (
+      <img
+        src={effectiveSrc}
+        alt="Fusión Digital"
+        className={`h-10 w-auto max-w-[190px] object-contain ${className}`}
+      />
+    )
   }
   if (variant === 'isotipo') return <Isotipo className={className || 'h-10 w-auto'} />
 

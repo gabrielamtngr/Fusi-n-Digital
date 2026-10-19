@@ -3,8 +3,8 @@ import { Mail, Phone } from 'lucide-react'
 import { contact, mailHref, telHref } from '../../data/site'
 import { services } from '../../data/services'
 import { talentCards } from '../../data/talent'
-import { BrandLogo } from '../ui/BrandLogo'
 import { SocialLinks } from '../ui/SocialLinks'
+import logoSrc from '../../assets/logo.png'
 
 const linkClass = 'text-sm text-white/65 transition hover:text-lavender'
 
@@ -32,10 +32,15 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 pt-20 pb-10 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>
-            <Link to="/" aria-label="Fusión Digital — Inicio" className="inline-block p-2">
-              <BrandLogo theme="dark" className="text-[17px]" />
+            <Link to="/" aria-label="Fusión Digital — Inicio" className="relative z-10 inline-block mb-6">
+              <img
+                src={logoSrc}
+                alt="Fusión Digital"
+                className="h-[64px] sm:h-[80px] w-auto max-h-none object-contain opacity-100"
+                style={{ width: 'auto', maxHeight: 'none', opacity: 1, objectFit: 'contain' }}
+              />
             </Link>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/65">
+            <p className="max-w-sm text-sm leading-relaxed text-white/65">
               Agencia de marketing que integra estrategia, medios, creatividad, multimedia y desarrollo tecnológico para liberar el
               potencial de tu marca.
             </p>

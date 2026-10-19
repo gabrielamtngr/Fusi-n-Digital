@@ -52,8 +52,7 @@ export default function ServiceDetail() {
             {service.problems.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.08}>
                 <div className="h-full rounded-[1.75rem] border border-white/10 bg-panel/40 p-7">
-                  <span className="text-sm font-medium text-lavender">0{i + 1}</span>
-                  <h3 className="mt-4">{p.title}</h3>
+                  <h3>{p.title}</h3>
                   <p className="mt-3 text-sm text-white/65">{p.text}</p>
                 </div>
               </Reveal>

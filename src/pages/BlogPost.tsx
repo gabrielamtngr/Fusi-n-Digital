@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Calendar, Clock, Info } from 'lucide-react'
-import { Breadcrumbs, Container, CtaBanner, Reveal } from '../components/ui/Section'
+import { Container, CtaBanner, Reveal } from '../components/ui/Section'
 import { PostCard } from '../components/cards'
 import { formatDate, getPost, posts } from '../data/blog'
 import { cdn } from '../data/site'
@@ -17,10 +17,9 @@ export default function BlogPost() {
   return (
     <>
       <article>
-        <header className="relative overflow-hidden pt-32 pb-12 sm:pt-40">
+        <header className="relative overflow-hidden pt-24 pb-12 sm:pt-28">
           <div className="absolute -top-40 left-1/2 size-[36rem] -translate-x-1/2 rounded-full bg-lavender/15 blur-[120px]" aria-hidden />
           <Container className="relative max-w-4xl">
-            <Breadcrumbs items={[{ label: 'Inicio', to: '/' }, { label: 'Blog', to: '/blog' }, { label: post.title }]} />
             <span className="rounded-full bg-lavender/15 px-3 py-1 text-xs font-medium text-lavender">{post.category}</span>
             <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} className="mt-6 !text-[clamp(2.2rem,1.2rem+4vw,4.5rem)]">
               {post.title}
