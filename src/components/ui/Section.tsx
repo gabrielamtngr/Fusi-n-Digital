@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { ChevronRight } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { ButtonLink } from './Button'
 import { PandaSlot } from './PandaSlot'
@@ -43,10 +45,37 @@ export function SectionHeading({
   )
 }
 
+export type Crumb = { label: string; to?: string }
+
+export function Breadcrumbs({ items }: { items: Crumb[] }) {
+  return (
+    <nav aria-label="Ruta de navegación" className="mb-8">
+      <ol className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-white/50">
+        {items.map((c, i) => (
+          <li key={c.label} className="flex items-center gap-1.5">
+            {c.to ? (
+              <Link to={c.to} className="transition hover:text-lavender">
+                {c.label}
+              </Link>
+            ) : (
+              <span aria-current="page" className="text-white/80">
+                {c.label}
+              </span>
+            )}
+            {i < items.length - 1 && <ChevronRight className="size-3" aria-hidden />}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
 /** Hero estándar de página interior */
 export function PageHero({
+  eyebrow,
   title,
   lead,
+  crumbs,
   aside,
   children,
   className = '',
@@ -64,6 +93,13 @@ export function PageHero({
       <div className="absolute -top-40 right-[-10%] size-[36rem] rounded-full bg-lavender/15 blur-[120px]" aria-hidden />
       <Container className="relative grid items-center gap-12 lg:grid-cols-[1.25fr_1fr]">
         <div>
+          {crumbs && <Breadcrumbs items={crumbs} />}
+          {eyebrow && (
+            <motion.p className="eyebrow mb-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <span className="h-px w-8 bg-lavender" aria-hidden />
+              {eyebrow}
+            </motion.p>
+          )}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
